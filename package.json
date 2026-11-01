@@ -1,0 +1,98 @@
+{
+  "name": "syncwave",
+  "productName": "SyncWave",
+  "version": "1.0.0",
+  "description": "Stream PC or app audio into a Discord voice channel through your own bot.",
+  "author": "GRIPHOX",
+  "license": "MIT",
+  "private": true,
+  "main": "out/main/index.js",
+  "scripts": {
+    "build:native": "cmd /c native\\capture\\build.cmd",
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "test:native": "vitest run --config vitest.native.config.mts",
+    "test:e2e": "electron-vite build && node tests/e2e/app.e2e.mjs",
+    "postinstall": "node scripts/fix-opus-binding.cjs",
+    "dist": "npm run build:native && npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.19.2",
+    "discord.js": "^14.28.0",
+    "opusscript": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "playwright-core": "^1.64.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "allowScripts": {
+    "@discordjs/opus@0.10.0": true,
+    "electron-winstaller@5.4.0": true
+  },
+  "build": {
+    "appId": "com.griphox.syncwave",
+    "productName": "SyncWave",
+    "copyright": "Copyright © 2026 GRIPHOX",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**",
+      "package.json",
+      "!node_modules/@discordjs/opus/{build,build-tmp-napi-v3,deps,src,tests}/**",
+      "!node_modules/@discordjs/opus/prebuild/*/*.{iobj,ipdb,pdb,lib,exp}",
+      "!node_modules/@discordjs/opus/prebuild/node-*/**",
+      "!node_modules/@discordjs/opus/prebuild/*libc_version*/**"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "npmRebuild": false,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SyncWave",
+      "runAfterFinish": true,
+      "artifactName": "SyncWave-Setup-${version}.exe"
+    }
+  }
+}
