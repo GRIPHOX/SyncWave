@@ -193,7 +193,11 @@ function LogView({ active }: { active: boolean }) {
     void api.getLogs().then(setLogs)
     return api.onLog((e) => setLogs((l) => [...l.slice(-499), e]))
   }, [active])
-  useEffect(() => end.current?.scrollIntoView({ block: 'end' }), [logs])
+  // Braces matter: newer Chromium returns a Promise from scrollIntoView, and
+  // React would try to call it as the effect's cleanup.
+  useEffect(() => {
+    end.current?.scrollIntoView({ block: 'end' })
+  }, [logs])
   return (
     <div className="log">
       {logs.length === 0 && <p className="empty small">Nothing logged yet.</p>}

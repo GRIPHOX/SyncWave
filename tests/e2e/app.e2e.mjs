@@ -116,6 +116,18 @@ try {
   assert.equal(saved.audio.bitrateKbps, 192)
   assert.equal(saved.audio.muted, true)
   step('mute + bitrate saved to settings.json')
+
+  // Activity log: opening it once blanked the whole window (effect returned a Promise).
+  const pageErrors = []
+  win.on('pageerror', (e) => pageErrors.push(e.message))
+  await win.click('.drawer .tabs button >> text=Activity log')
+  await win.waitForSelector('.log .log-line')
+  assert.match(await win.textContent('.log'), /Engine ready/)
+  await win.click('.drawer .tabs button >> text=General')
+  await win.waitForSelector('.drawer-body')
+  assert.deepEqual(pageErrors, [])
+  assert.equal(await win.isVisible('.crash'), false)
+  step('Activity log opens, shows engine messages, and closes without errors')
   await win.keyboard.press('Escape')
 
   await win.click('.source.system')

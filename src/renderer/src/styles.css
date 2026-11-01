@@ -1392,3 +1392,21 @@ select {
   color: var(--faint);
   font-size: 12.5px;
 }
+.crash {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.crash pre {
+  max-width: 560px;
+  white-space: pre-wrap;
+  font: 12px/1.5 'Cascadia Mono', Consolas, monospace;
+  color: #ff8a95;
+}
