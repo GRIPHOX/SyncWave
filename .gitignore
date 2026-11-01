@@ -4,3 +4,4 @@ release/
 native/capture/obj/
 *.log
 .vite/
+tests/e2e/screens/
