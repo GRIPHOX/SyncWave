@@ -91,6 +91,7 @@ export function App() {
             <i />
           </span>
           <span className="brand-name">SyncWave</span>
+          <span className="brand-credit">by Team GRIPHOX</span>
         </div>
         <EnginePill engine={snap.engine} error={snap.engineError} />
         <div className="titlebar-actions">

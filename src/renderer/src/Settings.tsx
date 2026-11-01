@@ -153,7 +153,9 @@ export function SettingsDrawer({
               />
             </section>
 
-            <p className="version">SyncWave {snap.version}</p>
+            <p className="version">
+              SyncWave {snap.version} · Made by <strong className="credit">Team GRIPHOX</strong>
+            </p>
           </div>
         )}
       </aside>

@@ -3,7 +3,7 @@
   "productName": "SyncWave",
   "version": "1.0.0",
   "description": "Stream PC or app audio into a Discord voice channel through your own bot.",
-  "author": "GRIPHOX",
+  "author": "Team GRIPHOX",
   "license": "MIT",
   "private": true,
   "main": "out/main/index.js",
@@ -47,7 +47,7 @@
   "build": {
     "appId": "com.griphox.syncwave",
     "productName": "SyncWave",
-    "copyright": "Copyright © 2026 GRIPHOX",
+    "copyright": "Copyright © 2026 Team GRIPHOX",
     "directories": {
       "output": "release",
       "buildResources": "build"
