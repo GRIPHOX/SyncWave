@@ -1,0 +1,50 @@
+name: Bug report
+description: Something in SyncWave doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please **never paste your bot token** here.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Audio source
+      options:
+        - System audio
+        - A single app
+        - Not related to audio
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: App being shared (if any)
+      placeholder: e.g. Spotify, Chrome, VLC
+  - type: input
+    id: version
+    attributes:
+      label: SyncWave version
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: e.g. Windows 11 23H2, Windows 10 22H2
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Activity log
+      description: Settings → Activity log. Copy the lines around the problem.
+      render: text
