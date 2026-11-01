@@ -23,7 +23,7 @@
   <img src="https://img.shields.io/badge/Opus-1f2937?style=flat-square" alt="Opus" />
 </p>
 
-<a href="../../releases/latest"><img src="https://img.shields.io/badge/Download%20for%20Windows-SyncWave--Setup.exe-7c6cf6?style=for-the-badge&logo=windows11&logoColor=white" height="40" alt="Download for Windows" /></a>
+<a href="../../releases"><img src="https://img.shields.io/badge/Download%20for%20Windows-SyncWave--Setup.exe-7c6cf6?style=for-the-badge&logo=windows11&logoColor=white" height="40" alt="Download for Windows" /></a>
 
 <br/><br/>
 
